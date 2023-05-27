@@ -15,6 +15,10 @@ internal class Program
         builder.Services.AddDbContexts(builder.Configuration);
         builder.Services.AddRepositories();
         builder.Services.AddServices();
+        builder.Services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
         builder.Services.AddSwaggerConfiguration();
         builder.Services.AddConfigurationIdentity();

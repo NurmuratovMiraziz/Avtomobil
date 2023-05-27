@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace CorrectMistakes.Services.IRepository
 {
-    public interface ICarRepository
+    public interface IAutosalonRepository
     {
-        public Task Add(int autosalonId, Car car);
-        public Task Update(int id, Car car);
+        public Task Add(Autosalon autosalon);
+        public Task<IEnumerable<Autosalon>> GetAll();
+        public Task Update(int id, Autosalon autosalon);
         public Task Delete(int id);
-        public Task<IEnumerable<Car>> GetAll();
+
     }
 }

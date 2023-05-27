@@ -19,8 +19,10 @@ namespace CorrectMistakes.Services.Repository
             this.appDbContext = appDbContext;
         }
 
-        public async Task Add(Car car)
+        public async Task Add(int autosalonId, Car car)
         {
+            var autosalon = await appDbContext.Autosalons.FirstOrDefaultAsync(autosalon => autosalon.Id == autosalonId);
+            autosalon.Cars.Add(car);
             await appDbContext.Cars.AddAsync(car);
             await appDbContext.SaveChangesAsync();
         }

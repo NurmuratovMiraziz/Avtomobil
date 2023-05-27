@@ -17,7 +17,7 @@ namespace Avtomobil.Controllers
             this.carService = carService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddAsync(CarAddDTO car)
         {
@@ -29,14 +29,14 @@ namespace Avtomobil.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
             return Ok(await carService.GetAllAsync());
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateAsync(int id, CarAddDTO carAddDTO)
         {
@@ -44,7 +44,7 @@ namespace Avtomobil.Controllers
             return Ok();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> Deleteasync(int Id)
         {

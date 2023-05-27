@@ -4,6 +4,7 @@ using CorrectMistakes.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CorrectMistakes.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230517160751_sasasassa")]
+    partial class sasasassa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,13 +155,13 @@ namespace CorrectMistakes.Data.Migrations
                         {
                             Id = new Guid("7e6c2d5a-dc83-4bab-b7a9-98ae31ee16ec"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "791da5f4-251c-4b91-9ff5-1d036d47b1dd",
+                            ConcurrencyStamp = "be56bb00-2f94-4ffa-a52a-f2aef79bdcc1",
                             EmailConfirmed = false,
                             FirstName = "Mansur",
                             LastName = "Xamrayev",
                             LockoutEnabled = false,
                             NormalizedUserName = "KHMANSUR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBX//NCw/KPx7i79TO0XHGBh7NC6fdwC65VJge2tjGpmtIjsdDmCvSDQTt1PARP+1Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE2YX+eNhQiwBPtIJR0EWm0U/eSNWYH0rgx1sRsfqXrqHJcbP3zLJvHOnAHRbKcubQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Khmansur"
@@ -167,13 +170,13 @@ namespace CorrectMistakes.Data.Migrations
                         {
                             Id = new Guid("7e6c2d2a-dc83-4bab-b7a9-98ae31ee16ec"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "95025d83-d5ad-469f-963a-e155c43db98a",
+                            ConcurrencyStamp = "5f7e3cb3-62bf-40d2-907a-6567fe946c96",
                             EmailConfirmed = false,
                             FirstName = "Miraziz",
                             LastName = "Nurmuratov",
                             LockoutEnabled = false,
                             NormalizedUserName = "MIRAZIZ",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK13JtNEwbxrXk+qP989BnU78z5ayfCqRRbK86ffxeOZ8mR40VUxZZTXc9AVY0JeEw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENzTllRVSnJcOfYVtLTB9XSPoh7i3FOyqc1FTJpxHR6tEBDiSjsWSF0RllzYEh44FQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Miraziz"

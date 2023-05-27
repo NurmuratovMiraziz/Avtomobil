@@ -8,18 +8,20 @@ namespace Avtomobil.Services
     public class CarService : ICarService
     {
         ICarRepository carRepository;
+        IAutosalonRepository autosalonRepository;
         IMapper mapper;
 
-        public CarService(IMapper mapper, ICarRepository carRepository)
+        public CarService(IMapper mapper, ICarRepository carRepository, IAutosalonRepository autosalonRepository)
         {
             this.mapper = mapper;
             this.carRepository = carRepository;
+            this.autosalonRepository = autosalonRepository;
         }
 
         public async Task AddAsync(CarAddDTO carAddDTO)
         {
             var car = mapper.Map<Car>(carAddDTO);
-            await carRepository.Add(car);
+            await carRepository.Add(carAddDTO.AutosalonId, car);
         }
 
         public async Task DeleteAsync(int id)

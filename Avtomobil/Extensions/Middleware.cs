@@ -1,4 +1,5 @@
 ﻿using Avtomobil.Services;
+using Avtomobil.Services.AutosalonServices;
 using Avtomobil.Services.Identity;
 using CorrectMistakes.Data.DBContext;
 using CorrectMistakes.Data.Model.Identity;
@@ -24,11 +25,13 @@ namespace Avtomobil.Extensions
         public static void AddRepositories(this IServiceCollection services)
         {
             services.AddTransient<ICarRepository, CarRepository>();
+            services.AddTransient<IAutosalonRepository, AutosalonRepository>();
         }
 
         public static void AddServices(this IServiceCollection services)
         {
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<IAutosalonService, AutosalonServices>();
             services.AddTransient<IAuthManager,  AuthManager>();
             services.AddAutoMapper(typeof(Program));
         }

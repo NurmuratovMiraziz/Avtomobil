@@ -16,6 +16,7 @@ namespace CorrectMistakes.Data.DBContext
     public class AppDbContext : IdentityDbContext<ApiUser, Role, Guid>
     {
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Autosalon> Autosalons { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
