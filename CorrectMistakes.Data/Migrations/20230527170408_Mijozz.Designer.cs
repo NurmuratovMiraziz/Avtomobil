@@ -4,6 +4,7 @@ using CorrectMistakes.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CorrectMistakes.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230527170408_Mijozz")]
+    partial class Mijozz
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace CorrectMistakes.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CarMijoz", b =>
-                {
-                    b.Property<int>("CarsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MijozId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CarsId", "MijozId");
-
-                    b.HasIndex("MijozId");
-
-                    b.ToTable("CarMijoz");
-                });
 
             modelBuilder.Entity("CorrectMistakes.Data.Model.Autosalon", b =>
                 {
@@ -65,6 +53,9 @@ namespace CorrectMistakes.Data.Migrations
                     b.Property<int>("AutosalonId")
                         .HasColumnType("int");
 
+                    b.Property<int>("MijozId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Modeli")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -82,6 +73,8 @@ namespace CorrectMistakes.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AutosalonId");
+
+                    b.HasIndex("MijozId");
 
                     b.ToTable("Cars");
                 });
@@ -167,13 +160,13 @@ namespace CorrectMistakes.Data.Migrations
                         {
                             Id = new Guid("7e6c2d5a-dc83-4bab-b7a9-98ae31ee16ec"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e9998c9a-b4d8-40cd-ae68-ce06f2cd734d",
+                            ConcurrencyStamp = "cb27c792-faed-492b-b949-591faab97567",
                             EmailConfirmed = false,
                             FirstName = "Mansur",
                             LastName = "Xamrayev",
                             LockoutEnabled = false,
                             NormalizedUserName = "KHMANSUR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOyHJTLmhJ7Lf749fxfdZ0EvKWqmaDFXr2zZfylNgsH4UBxP2/nTPvqV76hnI3Qvyg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC24dp+tHkcrZFS0wAPTkfDoGO3faArFpyv1WKdYgU3y9eoD1pynogMkBE4dY1Mgtw==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Khmansur"
@@ -182,13 +175,13 @@ namespace CorrectMistakes.Data.Migrations
                         {
                             Id = new Guid("7e6c2d2a-dc83-4bab-b7a9-98ae31ee16ec"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "794a1171-3cf1-4632-bed4-5abe6cacc207",
+                            ConcurrencyStamp = "dab0d49b-b684-4169-97e5-da77bb90f9ca",
                             EmailConfirmed = false,
                             FirstName = "Miraziz",
                             LastName = "Nurmuratov",
                             LockoutEnabled = false,
                             NormalizedUserName = "MIRAZIZ",
-                            PasswordHash = "AQAAAAIAAYagAAAAELGgc3xLQs0yfaOCU4S+Tdjg8v2kWt/pkJlVYlB8XqDtCmT1Ruk3J6LVyBPjWWg2tw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIdSQIRpjWgzE8v+OeNxcTxFE6/P2i+M8oQjwwuCrxiQfj8Ko1CyegyGOAgpFh7oJA==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "Miraziz"
@@ -369,21 +362,6 @@ namespace CorrectMistakes.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CarMijoz", b =>
-                {
-                    b.HasOne("CorrectMistakes.Data.Model.Car", null)
-                        .WithMany()
-                        .HasForeignKey("CarsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CorrectMistakes.Data.Model.Mijoz", null)
-                        .WithMany()
-                        .HasForeignKey("MijozId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("CorrectMistakes.Data.Model.Car", b =>
                 {
                     b.HasOne("CorrectMistakes.Data.Model.Autosalon", "Autosalon")
@@ -392,7 +370,15 @@ namespace CorrectMistakes.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CorrectMistakes.Data.Model.Mijoz", "Mijoz")
+                        .WithMany("Cars")
+                        .HasForeignKey("MijozId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Autosalon");
+
+                    b.Navigation("Mijoz");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -447,6 +433,11 @@ namespace CorrectMistakes.Data.Migrations
                 });
 
             modelBuilder.Entity("CorrectMistakes.Data.Model.Autosalon", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("CorrectMistakes.Data.Model.Mijoz", b =>
                 {
                     b.Navigation("Cars");
                 });

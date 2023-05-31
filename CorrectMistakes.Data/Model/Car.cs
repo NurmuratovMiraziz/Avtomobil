@@ -15,5 +15,11 @@ namespace CorrectMistakes.Data.Model
         public string Rangi { get; set; }
 
         public Autosalon Autosalon { get; set; }
+
+        public IList<Mijoz> Mijoz { get; set; }
+        public Car()
+        {
+            Mijoz = new List<Mijoz>();
+        }
     }
 }

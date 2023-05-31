@@ -17,6 +17,7 @@ namespace CorrectMistakes.Data.DBContext
     {
         public DbSet<Car> Cars { get; set; }
         public DbSet<Autosalon> Autosalons { get; set; }
+        public DbSet<Mijoz> Mijozs { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

@@ -15,6 +15,8 @@ namespace Avtomobil.Configuration
             CreateMap<ApiUser, UserDto>().ReverseMap();
 
             CreateMap<AddAutosalonDTO, Autosalon>().ReverseMap();
+
+            CreateMap<MijozAddDTO, Mijoz>().ReverseMap();
         }
     }
 }

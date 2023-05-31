@@ -3,7 +3,7 @@ using Avtomobil.DTO;
 using CorrectMistakes.Data.Model;
 using CorrectMistakes.Services.IRepository;
 
-namespace Avtomobil.Services
+namespace Avtomobil.Services.CarServices
 {
     public class CarService : ICarService
     {
@@ -29,7 +29,7 @@ namespace Avtomobil.Services
             await carRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<Car>> GetAllAsync()=>
+        public async Task<IEnumerable<Car>> GetAllAsync() =>
             await carRepository.GetAll();
 
         public async Task UpdateAsync(int id, CarAddDTO carAddDTO)
@@ -37,5 +37,8 @@ namespace Avtomobil.Services
             var car = mapper.Map<Car>(carAddDTO);
             await carRepository.Update(id, car);
         }
+
+        public async Task<IEnumerable<Car>> GetAllModelAsync(string model)=>
+            await carRepository.GetAllModel(model);
     }
 }

@@ -48,5 +48,8 @@ namespace CorrectMistakes.Services.Repository
             appDbContext.Cars.Attach(oldCar).CurrentValues.SetValues(newCar);
             await appDbContext.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<Car>> GetAllModel(string model) =>
+            (IEnumerable<Car>)await appDbContext.Cars.FirstAsync(p => model == null || p.Modeli.ToLower().Contains(model.ToLower()));
     }
 }

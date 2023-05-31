@@ -1,5 +1,5 @@
 ﻿using Avtomobil.DTO;
-using Avtomobil.Services;
+using Avtomobil.Services.CarServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +24,7 @@ namespace Avtomobil.Controllers
             if (car is not null)
             {
                 await carService.AddAsync(car);
+
                 return Ok();
             }
             return BadRequest();
@@ -36,11 +37,18 @@ namespace Avtomobil.Controllers
             return Ok(await carService.GetAllAsync());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllModel(string model)
+        {
+            return Ok(await carService.GetAllAsync());
+        }
+
         //[Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateAsync(int id, CarAddDTO carAddDTO)
         {
             await carService.UpdateAsync(id, carAddDTO);
+
             return Ok();
         }
 
@@ -49,6 +57,7 @@ namespace Avtomobil.Controllers
         public async Task<IActionResult> Deleteasync(int Id)
         {
             await carService.DeleteAsync(Id);
+
             return Ok();
         }
     }
